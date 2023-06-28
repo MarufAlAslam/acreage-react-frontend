@@ -1,0 +1,16 @@
+.container{
+    width: 1200px;
+    max-width: 100%;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
+.hero{
+    background: linear-gradient(transparent, #655E56),url("../images/hero-bg.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.lh-1{
+    line-height: 1;
+}
