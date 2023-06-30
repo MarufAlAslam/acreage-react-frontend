@@ -39,13 +39,13 @@ const Join = () => {
             <form>
               <div className="form-group mb-[20px]">
                 <label className="text-white ls- block mb-2">FULL NAME</label>
-                <input type="text" className="form-control w-full py-4" />
+                <input type="text" className="form-control w-full py-4 px-3" />
               </div>
               <div className="form-group mb-[70px]">
                 <label className="text-white ls- block mb-2">
                   EMAIL ADDRESS
                 </label>
-                <input type="email" className="form-control w-full py-4" />
+                <input type="email" className="form-control w-full py-4 px-3" />
               </div>
 
               <button
@@ -71,7 +71,7 @@ const Join = () => {
               type="submit"
               className="btn btn-primary w-full py-5 ls-2 bg-[#83895C] text-white"
             >
-              JOIN OUR MAILING LIST
+              COMPLETE SURVEY
             </button>
           </div>
         </div>
