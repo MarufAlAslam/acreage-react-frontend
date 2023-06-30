@@ -17,3 +17,10 @@
 .lh-2{
     line-height: 2;
 }
+
+.benifits{
+    background-image: url("../images/benifit.png");
+    background-repeat: no-repeat;
+    background-size: 55%;
+    background-position: right;
+}
