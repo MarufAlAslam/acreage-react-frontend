@@ -131,7 +131,7 @@ const SurveyForm = () => {
         8. What roles does costs play in your decision to renovate or redevelop
         your property?
       </p>
-      <div className="flex justify-start items-center gap-20 mb-[70px]">
+      <div className="flex md:flex-row flex-col justify-start md:items-center items-start gap-20 mb-[70px]">
         <div>
           <input id="yes1" type="radio" className="form-radio" />
           <label htmlFor="yes1" className="text-white text-sm ml-[10px]">

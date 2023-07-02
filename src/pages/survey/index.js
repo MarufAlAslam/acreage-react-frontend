@@ -30,7 +30,9 @@ const Survey = () => {
             />
           </svg>
         </Link>
-        <h2 className="text-[95px] text-white mb-[120px]">feedback survey</h2>
+        <h2 className="md:text-[95px] text-[50px] text-white mb-[120px]">
+          feedback survey
+        </h2>
         <SurveyForm />
       </div>
     </div>
