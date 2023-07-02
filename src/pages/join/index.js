@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Join = () => {
   return (
@@ -67,12 +68,13 @@ const Join = () => {
               powerful land use tool. We
             </p>
 
-            <button
+            <Link
+              to={"/survey"}
               type="submit"
-              className="btn btn-primary w-full py-5 ls-2 bg-[#83895C] text-white"
+              className="btn btn-primary w-full py-5 ls-2 bg-[#83895C] text-center inline-sblock text-white"
             >
               COMPLETE SURVEY
-            </button>
+            </Link>
           </div>
         </div>
       </div>
