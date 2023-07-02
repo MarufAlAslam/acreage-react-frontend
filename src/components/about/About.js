@@ -7,7 +7,7 @@ const About = () => {
       <div className="container">
         <div className="line w-1/2 bg-white h-[1px]"></div>
 
-        <div className="grid mt-[85px] grid-cols-2 gap-16">
+        <div className="grid mt-[85px] md:grid-cols-2 grid-cols-1 gap-16">
           <div>
             <h2 className="text-xl text-white">
               Maximize Your <br /> Property's Use & Value

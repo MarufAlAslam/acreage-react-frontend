@@ -1,11 +1,41 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const Header = () => {
+  useEffect(() => {
+    const menu = document.querySelector(".menu");
+    const menuOverlay = document.querySelector(".menu-overlay");
+    menu.classList.remove("active");
+    menuOverlay.classList.remove("active");
+  }, []);
+
+  const handleMenuActive = () => {
+    const menu = document.querySelector(".menu");
+    const menuOverlay = document.querySelector(".menu-overlay");
+    menu.classList.toggle("active");
+    menuOverlay.classList.toggle("active");
+  };
   return (
     <div className="header bg-[#252D43]">
       <div className="flex justify-between items-center gap-3">
-        <div className="w-1/5 flex justify-center items-center">
+        <div className="md:w-1/5 flex justify-center items-center">
+          <button
+            className="md:hidden block px-3 menu-btn"
+            onClick={handleMenuActive}
+          >
+            <svg
+              width="24"
+              height="14"
+              viewBox="0 0 24 14"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect width="24" height="2" fill="white" />
+              <rect y="6" width="24" height="2" fill="white" />
+              <rect y="12" width="24" height="2" fill="white" />
+            </svg>
+          </button>
+
           <Link to="/">
             <svg
               width="165"
@@ -32,7 +62,11 @@ const Header = () => {
             </svg>
           </Link>
         </div>
-        <div className="flex w-3/5 justify-center gap-14 items-center">
+        <div
+          className="menu-overlay md:hidden block"
+          onClick={handleMenuActive}
+        ></div>
+        <div className="flex md:w-3/5 justify-center gap-14 items-center menu">
           <Link
             to="/about"
             className="py-6 flex justify-center items-center text-white h-full"
@@ -54,9 +88,9 @@ const Header = () => {
         </div>
         <Link
           to="/join"
-          className="w-1/5 py-6 flex justify-center items-center text-white bg-[#83895C] h-full"
+          className="md:w-1/5 py-6 md:px-0 px-8 flex justify-center items-center text-white bg-[#83895C] h-full"
         >
-          JOIN MAILING LIST
+          JOIN <span className="md:inline-block hidden ml-1">MAILING LIST</span>
         </Link>
       </div>
     </div>

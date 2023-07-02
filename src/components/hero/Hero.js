@@ -27,7 +27,7 @@ const Hero = () => {
           />
         </svg>
 
-        <h2 className="mt-[20px] mb-[75px] text-[60px] text-white lh-1 font-normal">
+        <h2 className="mt-[20px] mb-[75px] md:text-[60px] text-[45px]  text-white lh-1 font-normal">
           Unlock Your <br /> Property's Full
           <br /> Potential.
         </h2>

@@ -35,7 +35,7 @@ const Footer = () => {
             Land Analysis PacketLand Analysis Packet
             <br /> Land Analysis Packet <br /> Land Analysis PacketLand Analysi
           </p>
-          <div className="flex justify-center items-center gap-10 mb-[25px]">
+          <div className="flex md:flex-row flex-col justify-center items-center gap-10 mb-[25px]">
             <Link to="/" className="text-white">
               Welcome to Acreage
             </Link>
@@ -49,7 +49,7 @@ const Footer = () => {
               Join Our Email List.
             </Link>
           </div>
-          <div className="flex justify-center items-center gap-10">
+          <div className="flex md:flex-row flex-col md:mt-0 mt-10 justify-center items-center gap-10">
             <Link to="/" className="text-white">
               Acreage Work
             </Link>
