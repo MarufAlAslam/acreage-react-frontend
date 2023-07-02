@@ -5,8 +5,8 @@ const Join = () => {
   return (
     <div className="bg-[#252d43bf] py-[100px]">
       <div className="container">
-        <div className="flex justify-between bg-[#252D43]">
-          <div className="md:w-1/2 bg-[#83895C] p-[80px]">
+        <div className="flex md:flex-row flex-col justify-between bg-[#252D43]">
+          <div className="md:w-1/2 bg-[#83895C] md:p-[80px] p-[30px]">
             <div className="flex justify-between items-start mb-[40px]">
               <h2 className="text-4xl text-white">
                 join our
@@ -57,8 +57,8 @@ const Join = () => {
               </button>
             </form>
           </div>
-          <div className="md:w-1/2 h-full bg-[#252D43] p-[80px]">
-            <h2 className="text-6xl text-white mb-[50px]">
+          <div className="md:w-1/2 h-full bg-[#252D43] md:p-[80px] p-[30px]">
+            <h2 className="md:text-6xl text-3xl text-white mb-[50px]">
               Complete our survey for early access to the{" "}
               <span className="text-[#83895C]">acreage</span> platform.
             </h2>
