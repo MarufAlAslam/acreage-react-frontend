@@ -1,9 +1,68 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Modal from "../../components/modal";
 
 const Join = () => {
+  const [modal, setModal] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
+  const joinToList = (e) => {
+    setLoading(true);
+    e.preventDefault();
+
+    const form = e.target;
+
+    const fullName = form.fullName.value;
+    const email = form.email.value;
+
+    const data = {
+      fullName,
+      email,
+    };
+
+    console.log(data);
+
+    fetch("http://localhost:5000/api/v1/survey/join", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setLoading(false);
+        setModal(true);
+        form.reset();
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
+
+  // set modal disappear after 3 seconds
+  React.useEffect(() => {
+    if (modal) {
+      setTimeout(() => {
+        setModal(false);
+      }, 3000);
+    }
+  }, [modal]);
+
+  // handle modal disappear when click outside
+  const hideModal = () => {
+    setModal(false);
+  };
   return (
     <div className="bg-[#252d43bf] py-[100px]">
+      {loading && (
+        <div className="fixed top-0 left-0 bg-black opacity-80 h-screen w-full">
+          <div className="flex justify-center items-center h-screen">
+            <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-white-900"></div>
+          </div>
+        </div>
+      )}
+      {!loading && modal && <Modal hideModal={hideModal} />}
       <div className="container">
         <div className="flex md:flex-row flex-col justify-between bg-[#252D43]">
           <div className="md:w-1/2 bg-[#83895C] md:p-[80px] p-[30px]">
@@ -37,16 +96,26 @@ const Join = () => {
               powerful land use tool. We
             </p>
 
-            <form>
+            <form onSubmit={joinToList}>
               <div className="form-group mb-[20px]">
                 <label className="text-white ls- block mb-2">FULL NAME</label>
-                <input type="text" className="form-control w-full py-4 px-3" />
+                <input
+                  required
+                  type="text"
+                  name="fullName"
+                  className="form-control w-full py-4 px-3"
+                />
               </div>
               <div className="form-group mb-[70px]">
                 <label className="text-white ls- block mb-2">
                   EMAIL ADDRESS
                 </label>
-                <input type="email" className="form-control w-full py-4 px-3" />
+                <input
+                  required
+                  type="email"
+                  name="email"
+                  className="form-control w-full py-4 px-3"
+                />
               </div>
 
               <button
