@@ -60,7 +60,7 @@ const SurveyForm = () => {
 
     console.log(data);
 
-    fetch("http://localhost:5000/api/v1/survey/submit", {
+    fetch("http://localhost:8000/api/v1/survey", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -289,7 +289,7 @@ const SurveyForm = () => {
 
         <div className="mb-[70px]">
           <p className="text-lg text-white">
-            6, What are your limitations regarding redevelopment of your
+            6. What are your limitations regarding redevelopment of your
             property?
           </p>
           <input
