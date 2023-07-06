@@ -21,7 +21,7 @@ const Join = () => {
 
     console.log(data);
 
-    fetch("http://localhost:8000/api/v1/mailingList", {
+    fetch("https://acreage-server.vercel.app/api/v1/mailingList", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -60,7 +60,7 @@ const SurveyForm = () => {
 
     console.log(data);
 
-    fetch("http://localhost:8000/api/v1/survey", {
+    fetch("https://acreage-server.vercel.app/api/v1/survey", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
