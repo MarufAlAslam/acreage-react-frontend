@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Modal from "../../components/modal";
+// import Modal from "../../components/modal";
 
 const Join = ({ handleModal }) => {
   const [modal, setModal] = React.useState(false);
@@ -50,9 +50,9 @@ const Join = ({ handleModal }) => {
   // }, [modal]);
 
   // handle modal disappear when click outside
-  const hideModal = () => {
-    setModal(false);
-  };
+  // const hideModal = () => {
+  //   setModal(false);
+  // };
   return (
     <div className="bg-[#252d43bf] py-[15px]">
       {loading && (
