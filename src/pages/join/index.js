@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Modal from "../../components/modal";
 
-const Join = () => {
+const Join = ({ handleModal }) => {
   const [modal, setModal] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const joinToList = (e) => {
@@ -41,20 +41,20 @@ const Join = () => {
   };
 
   // set modal disappear after 3 seconds
-  React.useEffect(() => {
-    if (modal) {
-      setTimeout(() => {
-        setModal(false);
-      }, 3000);
-    }
-  }, [modal]);
+  // React.useEffect(() => {
+  //   if (modal) {
+  //     setTimeout(() => {
+  //       setModal(false);
+  //     }, 3000);
+  //   }
+  // }, [modal]);
 
   // handle modal disappear when click outside
   const hideModal = () => {
     setModal(false);
   };
   return (
-    <div className="bg-[#252d43bf] py-[100px]">
+    <div className="bg-[#252d43bf] py-[15px]">
       {loading && (
         <div className="fixed top-0 left-0 bg-black opacity-80 h-screen w-full">
           <div className="flex justify-center items-center h-screen">
@@ -62,7 +62,7 @@ const Join = () => {
           </div>
         </div>
       )}
-      {!loading && modal && <Modal hideModal={hideModal} />}
+      {/* {!loading && modal && <Modal hideModal={hideModal} />} */}
       <div className="container">
         <div className="flex md:flex-row flex-col justify-between bg-[#252D43]">
           <div className="md:w-1/2 bg-[#83895C] md:p-[80px] p-[30px]">
@@ -96,35 +96,51 @@ const Join = () => {
               powerful land use tool. We
             </p>
 
-            <form onSubmit={joinToList}>
-              <div className="form-group mb-[20px]">
-                <label className="text-white ls- block mb-2">FULL NAME</label>
-                <input
-                  required
-                  type="text"
-                  name="fullName"
-                  className="form-control w-full py-4 px-3"
-                />
-              </div>
-              <div className="form-group mb-[70px]">
-                <label className="text-white ls- block mb-2">
-                  EMAIL ADDRESS
-                </label>
-                <input
-                  required
-                  type="email"
-                  name="email"
-                  className="form-control w-full py-4 px-3"
-                />
-              </div>
+            {modal ? (
+              <>
+                <h2 className="text-[25px] text-white">
+                  Thank you for your submission! <br /> <br /> We will contact
+                  you with Acreage news and product updates.
+                </h2>
 
-              <button
-                type="submit"
-                className="btn btn-primary w-full py-5 ls-2 bg-[#252D43] text-white"
-              >
-                JOIN OUR MAILING LIST
-              </button>
-            </form>
+                <button
+                  onClick={handleModal}
+                  className="btn block text-center mt-[100px] btn-primary w-full py-5 ls-2 bg-[#252D43] text-white"
+                >
+                  RETURN TO ACREAGE
+                </button>
+              </>
+            ) : (
+              <form onSubmit={joinToList}>
+                <div className="form-group mb-[20px]">
+                  <label className="text-white ls- block mb-2">FULL NAME</label>
+                  <input
+                    required
+                    type="text"
+                    name="fullName"
+                    className="form-control w-full py-4 px-3"
+                  />
+                </div>
+                <div className="form-group mb-[70px]">
+                  <label className="text-white ls- block mb-2">
+                    EMAIL ADDRESS
+                  </label>
+                  <input
+                    required
+                    type="email"
+                    name="email"
+                    className="form-control w-full py-4 px-3"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="btn btn-primary w-full py-5 ls-2 bg-[#252D43] text-white"
+                >
+                  JOIN OUR MAILING LIST
+                </button>
+              </form>
+            )}
           </div>
           <div className="md:w-1/2 h-full bg-[#252D43] md:p-[80px] p-[30px]">
             <h2 className="md:text-6xl text-3xl text-white mb-[50px]">
