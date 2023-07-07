@@ -4,6 +4,7 @@ import Modal from "../modal";
 const SurveyForm = () => {
   const [modal, setModal] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
+  const [showAmount, setShowAmount] = React.useState(false);
   const submitSurvey = (e) => {
     setLoading(true);
     e.preventDefault();
@@ -17,16 +18,34 @@ const SurveyForm = () => {
     const type = form.type.value;
     const rental = form.rental.value;
     const redevelop = form.redevelop.value;
-    const primaryReason = form.primaryReason.value;
+    // const primaryReason = form.primaryReason.value;
+    // get primary reason value from checkbox
+    const primaryReason = [];
+    const primaryReasonInputs = document.querySelectorAll(
+      'input[name="primaryReason"]:checked'
+    );
+    primaryReasonInputs.forEach((input) => {
+      primaryReason.push(input.value);
+    });
+
     const why = form.why.value;
     const limitations = form.limitations.value;
     const interest = form.interest.value;
     const decision = form.decision.value;
     const budget = form.budget.value;
+    const amount = form.amount?.value ? form.amount.value : "N/A";
     const step = form.step.value;
     const scope = form.scope.value;
     const renovation = form.renovation.value;
-    const challenges = form.challenges.value;
+    // const challenges = form.challenges.value;
+    // get challenges value from checkbox
+    const challenges = [];
+    const challengesInputs = document.querySelectorAll(
+      'input[name="challenges"]:checked'
+    );
+    challengesInputs.forEach((input) => {
+      challenges.push(input.value);
+    });
     const revelopingProperty = form.revelopingProperty.value;
     const additional = form.additional.value;
     const features = form.features.value;
@@ -47,6 +66,7 @@ const SurveyForm = () => {
       interest,
       decision,
       budget,
+      amount,
       step,
       scope,
       renovation,
@@ -264,21 +284,88 @@ const SurveyForm = () => {
         </div>
 
         <div className="mb-[70px]">
-          <p className="text-lg text-white">
-            4. What are your primary reasons for considering property
-            renovations? (provide options)
+          <p className="text-lg text-white mb-[45px]">
+            What are your primary reasons for considering property renovations?
           </p>
-          <input
+          {/* <input
             type="text"
             name="primaryReason"
             className="form-control w-full p-3 mt-2"
-          />
+          /> */}
+
+          {/* check boxes for multi select */}
+          <div className="flex flex-col justify-start items-start mb-[70px]">
+            <div className="flex justify-between items-center mb-3">
+              <input
+                id="reason1"
+                value={"Desire for a new look/feel of your property"}
+                type="checkbox"
+                name="primaryReason"
+                className="form-checkbox"
+              />
+
+              <label htmlFor="reason1" className="text-white text-sm ml-[10px]">
+                Desire for a new look/feel of your property
+              </label>
+            </div>
+            <div className="flex justify-between items-center mb-3">
+              <input
+                id="reason2"
+                value={"Increase the value of the property"}
+                type="checkbox"
+                name="primaryReason"
+                className="form-checkbox"
+              />
+
+              <label htmlFor="reason2" className="text-white text-sm ml-[10px]">
+                Increase the value of the property
+              </label>
+            </div>
+            <div className="flex justify-between items-center mb-3">
+              <input
+                id="reason3"
+                value={"To commercialize property for rent"}
+                type="checkbox"
+                name="primaryReason"
+                className="form-checkbox"
+              />
+
+              <label htmlFor="reason3" className="text-white text-sm ml-[10px]">
+                To commercialize property for rent
+              </label>
+            </div>
+            <div className="flex justify-between items-center mb-3">
+              <input
+                id="reason4"
+                value={"Curiosity"}
+                type="checkbox"
+                name="primaryReason"
+                className="form-checkbox"
+              />
+
+              <label htmlFor="reason4" className="text-white text-sm ml-[10px]">
+                Curiosity
+              </label>
+            </div>
+            <div className="flex justify-between items-center mb-3">
+              <input
+                id="reason5"
+                value={"Other/Additional"}
+                type="checkbox"
+                name="primaryReason"
+                className="form-checkbox"
+              />
+
+              <label htmlFor="reason5" className="text-white text-sm ml-[10px]">
+                Other/Additional
+              </label>
+            </div>
+          </div>
         </div>
 
         <div className="mb-[70px]">
           <p className="text-lg text-white">
             5. Why would you want to redevelop the property that you live in?
-            (provide options)
           </p>
           <input
             type="text"
@@ -288,15 +375,79 @@ const SurveyForm = () => {
         </div>
 
         <div className="mb-[70px]">
-          <p className="text-lg text-white">
+          <p className="text-lg text-white mb-[45px]">
             6. What are your limitations regarding redevelopment of your
             property?
           </p>
-          <input
+          {/* <input
             type="text"
             name="limitations"
             className="form-control w-full p-3 mt-2"
-          />
+          /> */}
+
+          {/* radio buttons */}
+          <div className="flex justify-start items-center gap-20 mb-[70px]">
+            <div>
+              <input
+                id="limitations1"
+                value={"Finances"}
+                type="radio"
+                name="limitations"
+                className="form-radio"
+              />
+              <label
+                htmlFor="limitations1"
+                className="text-white text-sm ml-[10px]"
+              >
+                Finances
+              </label>
+            </div>
+            <div>
+              <input
+                id="limitations2"
+                value={"Knowledge"}
+                type="radio"
+                name="limitations"
+                className="form-radio"
+              />
+              <label
+                htmlFor="limitations2"
+                className="text-white text-sm ml-[10px]"
+              >
+                Knowledge
+              </label>
+            </div>
+            <div>
+              <input
+                id="limitations3"
+                value={"Time"}
+                type="radio"
+                name="limitations"
+                className="form-radio"
+              />
+              <label
+                htmlFor="limitations3"
+                className="text-white text-sm ml-[10px]"
+              >
+                Time
+              </label>
+            </div>
+            <div>
+              <input
+                id="limitations4"
+                value={"Other/Additional"}
+                type="radio"
+                name="limitations"
+                className="form-radio"
+              />
+              <label
+                htmlFor="limitations4"
+                className="text-white text-sm ml-[10px]"
+              >
+                Other/Additional
+              </label>
+            </div>
+          </div>
         </div>
 
         <p className="text-lg text-white mb-[45px]">
@@ -385,6 +536,7 @@ const SurveyForm = () => {
               type="radio"
               name="budget"
               className="form-radio"
+              onChange={() => setShowAmount(false)}
             />
             <label htmlFor="budget1" className="text-white text-sm ml-[10px]">
               No
@@ -398,12 +550,84 @@ const SurveyForm = () => {
               type="radio"
               name="budget"
               className="form-radio"
+              onChange={() => setShowAmount(true)}
             />
             <label htmlFor="budget2" className="text-white text-sm ml-[10px]">
               Yes
             </label>
           </div>
         </div>
+
+        {/* if the answer of 9 is yes, add some more options */}
+        {showAmount && (
+          <>
+            <p className="text-lg text-white mb-[45px]">
+              9.1. What's the budget Amount?
+            </p>
+            <div className="flex justify-start items-center gap-20 mb-[70px]">
+              <div>
+                <input
+                  id="amount1"
+                  value={"<$10,000"}
+                  type="radio"
+                  name="amount"
+                  className="form-radio"
+                />
+                <label
+                  htmlFor="amount1"
+                  className="text-white text-sm ml-[10px]"
+                >
+                  &lt;$10,000
+                </label>
+              </div>
+              <div>
+                <input
+                  id="amount2"
+                  value={"<$25,000"}
+                  type="radio"
+                  name="amount"
+                  className="form-radio"
+                />
+                <label
+                  htmlFor="amount2"
+                  className="text-white text-sm ml-[10px]"
+                >
+                  &lt;$25,000
+                </label>
+              </div>
+              <div>
+                <input
+                  id="amount3"
+                  value={"<$50,000"}
+                  type="radio"
+                  name="amount"
+                  className="form-radio"
+                />
+                <label
+                  htmlFor="amount3"
+                  className="text-white text-sm ml-[10px]"
+                >
+                  &lt;$50,000
+                </label>
+              </div>
+              <div>
+                <input
+                  id="amount4"
+                  value={">$50,000"}
+                  type="radio"
+                  name="amount"
+                  className="form-radio"
+                />
+                <label
+                  htmlFor="amount4"
+                  className="text-white text-sm ml-[10px]"
+                >
+                  &gt;$50,000
+                </label>
+              </div>
+            </div>
+          </>
+        )}
         <p className="text-lg text-white mb-[45px]">
           10. Do you know the initial steps of renovating or redeveloping your
           property?
@@ -505,25 +729,137 @@ const SurveyForm = () => {
         <div className="mb-[70px]">
           <p className="text-lg text-white">
             13. What are your perceived challenges regarding multifamily
-            development? (provide options)
+            development?
           </p>
-          <input
+          {/* <input
             type="text"
             name="challenges"
             className="w-full h-[50px] rounded-none p-3 mt-2"
-          />
+          /> */}
+          {/* checkboxes */}'
+          <div className="flex flex-col flex-wrap gap-2 mt-2">
+            <div className="flex justify-start items-center">
+              <input
+                id="challenges1"
+                value={"General contracting"}
+                type="checkbox"
+                name="challenges"
+                className="form-checkbox"
+              />
+              <label
+                htmlFor="challenges1"
+                className="text-white text-sm ml-[10px]"
+              >
+                General contracting
+              </label>
+            </div>
+            <div className="flex justify-start items-center">
+              <input
+                id="challenges2"
+                value={"Fluctuating pricing"}
+                type="checkbox"
+                name="challenges"
+                className="form-checkbox"
+              />
+              <label
+                htmlFor="challenges2"
+                className="text-white text-sm ml-[10px]"
+              >
+                Fluctuating pricing
+              </label>
+            </div>
+            <div className="flex justify-start items-center">
+              <input
+                id="challenges3"
+                value={"Timing"}
+                type="checkbox"
+                name="challenges"
+                className="form-checkbox"
+              />
+              <label
+                htmlFor="challenges3"
+                className="text-white text-sm ml-[10px]"
+              >
+                Timing
+              </label>
+            </div>
+          </div>
         </div>
 
         <div className="mb-[70px]">
           <p className="text-lg text-white">
             14. What are you least concerned about regarding renovating or
-            redeveloping your property? (provide options)
+            redeveloping your property?
           </p>
-          <input
+          {/* <input
             type="text"
             name="revelopingProperty"
             className="w-full h-[50px] rounded-none p-3 mt-2"
-          />
+          /> */}
+
+          {/* radio buttons */}
+          <div className="flex justify-start items-center gap-20 mt-2">
+            <div>
+              <input
+                id="redevelopingProperty1"
+                value={"Finances"}
+                type="radio"
+                name="redevelopingProperty"
+                className="form-radio"
+              />
+              <label
+                htmlFor="redevelopingProperty1"
+                className="text-white text-sm ml-[10px]"
+              >
+                Finances
+              </label>
+            </div>
+            <div>
+              <input
+                id="redevelopingProperty2"
+                value={"Knowledge"}
+                type="radio"
+                name="redevelopingProperty"
+                className="form-radio"
+              />
+              <label
+                htmlFor="redevelopingProperty2"
+                className="text-white text-sm ml-[10px]"
+              >
+                Knowledge
+              </label>
+            </div>
+            <div>
+              <input
+                id="redevelopingProperty3"
+                value={"Time"}
+                type="radio"
+                name="redevelopingProperty"
+                className="form-radio"
+              />
+              <label
+                htmlFor="redevelopingProperty3"
+                className="text-white text-sm ml-[10px]"
+              >
+                Time
+              </label>
+            </div>
+            <div>
+              <input
+                id="redevelopingProperty4"
+                value={"Other/Additional"}
+                type="radio"
+                name="revelopingProperty"
+                className="form-radio"
+              />
+              <label
+                htmlFor="redevelopingProperty4"
+                className="text-white text-sm ml-[10px]"
+              >
+                Other/Additional
+              </label>
+            </div>
+          </div>
         </div>
 
         <p className="text-lg text-white mb-[45px]">
