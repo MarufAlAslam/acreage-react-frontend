@@ -1,9 +1,19 @@
 import React from "react";
+import heroVideo from "../../assets/videos/hero.mp4";
 
 const Hero = () => {
   return (
-    <div className="hero py-[100px]">
-      <div className="container">
+    <div className="hero py-[100px] relative">
+      <div className="absolute inset-0 bg-black">
+        <video
+          src={heroVideo}
+          autoPlay
+          loop
+          muted
+          className="w-full h-full object-cover"
+        ></video>
+      </div>
+      <div className="container relative z-20">
         <svg
           width="282"
           height="84"
